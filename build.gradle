@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.7-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.1.6'
-//	id 'com.netflix.dgs.codegen' version '6.2.1'
+	id 'com.netflix.dgs.codegen' version '6.2.1'
 }
 
 group = 'org.learn.java'
@@ -19,32 +19,32 @@ repositories {
 	maven { url 'https://repo.spring.io/snapshot' }
 }
 
-//ext {
-//	set('netflixDgsVersion', "9.1.3")
-//}
+ext {
+	set('netflixDgsVersion', "9.1.3")
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-//	implementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter'
+	implementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//	testImplementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter-test'
-//	testImplementation 'org.springframework:spring-webflux'
+	testImplementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter-test'
+	testImplementation 'org.springframework:spring-webflux'
 	testImplementation 'org.springframework.graphql:spring-graphql-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-//dependencyManagement {
-//	imports {
-//		mavenBom "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:${netflixDgsVersion}"
-//	}
-//}
+dependencyManagement {
+	imports {
+		mavenBom "com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:${netflixDgsVersion}"
+	}
+}
 
-//generateJava {
-//	schemaPaths = ["${projectDir}/src/main/resources/graphql-client"]
-//	packageName = 'org.learn.java.graphql.codegen'
-//	generateClient = true
-//}
+generateJava {
+	schemaPaths = ["${projectDir}/src/main/resources/graphql-client"]
+	packageName = 'org.learn.java.graphql.codegen'
+	generateClient = true
+}
 
 tasks.named('test') {
 	useJUnitPlatform()
